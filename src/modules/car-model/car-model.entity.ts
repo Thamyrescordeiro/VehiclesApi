@@ -1,4 +1,4 @@
-import { BelongsTo, ForeignKey, Model } from 'sequelize-typescript';
+import { BelongsTo, ForeignKey, HasMany, Model } from 'sequelize-typescript';
 import {
   Column,
   DataType,
@@ -7,12 +7,14 @@ import {
   Table,
 } from 'sequelize-typescript';
 import { Brand } from '../brand/brand.entity';
+import { CreateCarModelDto } from './dtos/create-car-model.dto';
+import { Vehicles } from '../vehicle/vehicle.entity';
 
 @Table({
-  tableName: 'car_models',
+  tableName: 'carmodel',
   timestamps: false,
 })
-export class CarModel extends Model<CarModel> {
+export class CarModel extends Model<CarModel, CreateCarModelDto> {
   @PrimaryKey
   @Default(DataType.UUIDV4)
   @Column(DataType.UUID)
@@ -45,4 +47,7 @@ export class CarModel extends Model<CarModel> {
 
   @BelongsTo(() => Brand)
   brand: Brand;
+
+  @HasMany(() => Vehicles)
+  brands: Vehicles[];
 }

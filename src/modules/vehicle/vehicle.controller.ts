@@ -1,4 +1,51 @@
-import { Controller } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Delete,
+  Param,
+  Body,
+} from '@nestjs/common';
+import { VehicleService } from './vehicle.service';
+import { CreateVehicleDto } from './dtos/create-vehicle.dto';
+import { UpdateVehicleDto } from './dtos/update-vehicle.dto';
+import { Vehicles } from './vehicle.entity';
 
-@Controller('vehicle')
-export class VehicleController {}
+@Controller('vehicles')
+export class VehicleController {
+  constructor(private readonly vehicleService: VehicleService) {}
+
+  @Post('create')
+  async create(@Body() dto: CreateVehicleDto): Promise<Vehicles> {
+    return this.vehicleService.create(dto);
+  }
+
+  @Get()
+  async findAll(): Promise<Vehicles[]> {
+    return this.vehicleService.findAll();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string): Promise<Vehicles> {
+    return this.vehicleService.findOne(id);
+  }
+
+  @Get('user/:id')
+  async findByUser(@Param('id') user_id: string): Promise<Vehicles[]> {
+    return this.vehicleService.findByUser(user_id);
+  }
+
+  @Patch('update/:id')
+  async update(
+    @Param('id') id: string,
+    @Body() dto: UpdateVehicleDto,
+  ): Promise<Vehicles> {
+    return this.vehicleService.update(id, dto);
+  }
+
+  @Delete('delete/:id')
+  async delete(@Param('id') id: string) {
+    return this.vehicleService.delete(id);
+  }
+}

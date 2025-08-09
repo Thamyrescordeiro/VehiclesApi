@@ -10,12 +10,13 @@ import {
 import { Model } from 'sequelize-typescript';
 import { CarModel } from 'src/modules/car-model/car-model.entity';
 import { User } from 'src/modules/user/user.entity';
+import { CreateVehicleDto } from './dtos/create-vehicle.dto';
 
 @Table({
   tableName: 'vehicles',
   timestamps: false,
 })
-export class Vehicles extends Model<Vehicles> {
+export class Vehicles extends Model<Vehicles, CreateVehicleDto> {
   @PrimaryKey
   @Default(DataType.UUIDV4)
   @Column(DataType.UUID)
@@ -60,7 +61,7 @@ export class Vehicles extends Model<Vehicles> {
     type: DataType.UUID,
     allowNull: false,
   })
-  carmodel_id: string;
+  id_model: string;
 
   @BelongsTo(() => CarModel)
   carModel: CarModel;

@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './modules/user/user.module';
 import { DatabaseModule } from './database/database.module';
-import { BrandModule } from './modules/brand/brand.module';
+import { CarModelModule } from './modules/car-model/car-model.module';
+import { VehicleModule } from './modules/vehicle/vehicle.module';
+import { Brand } from './modules/brand/brand.entity';
 
 @Module({
-  imports: [DatabaseModule, UserModule, BrandModule],
+  imports: [DatabaseModule, UserModule, Brand, CarModelModule, VehicleModule],
   controllers: [],
   providers: [],
 })

@@ -2,11 +2,13 @@ import {
   Column,
   DataType,
   Default,
+  HasMany,
   Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
 import { CreateUserDto } from './dtos/create-user.dto';
+import { Brand } from '../brand/brand.entity';
 
 @Table({
   tableName: 'users',
@@ -48,4 +50,7 @@ export class User extends Model<User, CreateUserDto> {
     type: DataType.BOOLEAN,
   })
   active: boolean;
+
+  @HasMany(() => Brand)
+  brands: Brand[];
 }
