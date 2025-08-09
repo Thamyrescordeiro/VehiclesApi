@@ -17,7 +17,7 @@ API RESTful para gerenciamento de usuários, marcas, modelos de carros e veícul
 ## Instalação
 
 1. Clone o repositório:  
-   `git clone <seu-repositorio-url>`  
+   `git clone <https://github.com/Thamyrescordeiro/VehiclesApi>`  
    `cd seu-projeto`
 
 2. Instale as dependências:  
