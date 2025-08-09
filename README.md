@@ -31,6 +31,7 @@ DB_USERNAME=seu_usuario
 DB_PASSWORD=sua_senha
 DB_DATABASE=nome_do_banco
 
+
 4. Crie as tabelas no banco (via migrations ou manualmente).
 
 5. Execute o projeto em modo desenvolvimento:  
