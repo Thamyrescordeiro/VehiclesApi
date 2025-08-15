@@ -45,8 +45,10 @@ DB_DATABASE=nome_do_banco
 
 - `POST /user/create` — Criar usuário  
 - `GET /user` — Listar usuários  
+- `GET /user/active` — Listar usuários ativos
 - `GET /user/:id` — Buscar usuário por ID  
 - `PATCH /user/update/:id` — Atualizar usuário  
+- `PATCH /user/deactivate/:id`— Desativar usuário
 - `DELETE /user/delete/:id` — Deletar usuário  
 
 ### Marcas (`/brand`)
