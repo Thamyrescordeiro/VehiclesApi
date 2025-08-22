@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dtos/create-user.dto';
@@ -13,6 +14,7 @@ import { UpdateUserDto } from './dtos/update-user.dto';
 import { UseGuards } from '@nestjs/common';
 import { AuthGuard } from '../auth/auth.guard';
 import { User } from './user.entity';
+import { QueryUserDto } from './dtos/query-user.dto';
 
 @Controller('user')
 export class UserController {
@@ -22,10 +24,12 @@ export class UserController {
   create(@Body() user: CreateUserDto) {
     return this.userService.create(user);
   }
-  @UseGuards(AuthGuard)
   @Get()
-  async findAll() {
-    return this.userService.findAll();
+  @UseGuards(AuthGuard)
+  async findAll(
+    @Query() query: QueryUserDto,
+  ) {
+    return this.userService.findAll(query);
   }
 
   @UseGuards(AuthGuard)

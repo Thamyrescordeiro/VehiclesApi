@@ -8,8 +8,8 @@ import {
 } from 'class-validator';
 
 export class CreateUserDto {
-  @IsNotEmpty()
-  @IsString()
+    @IsNotEmpty()
+    @IsString()
   username: string;
 
   @IsNotEmpty()
@@ -27,8 +27,4 @@ export class CreateUserDto {
   @IsString()
   @IsEmail()
   email: string;
-
-  @IsBoolean()
-  @IsOptional()
-  active?: boolean;
 }
